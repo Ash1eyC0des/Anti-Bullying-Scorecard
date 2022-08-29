@@ -34,10 +34,6 @@ if(trim($name_support) == '') {
 	exit();
 }
 
-if(get_magic_quotes_gpc()) {
-	$message_contact = stripslashes($message_support);
-}
-
 
 //$address = "HERE your email address";
 $address = "info@domain.com";

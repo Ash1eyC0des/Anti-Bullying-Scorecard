@@ -2762,7 +2762,7 @@ a#filters_col_bt:before {
   font-size: 14px;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #999;
+  color: #f7f7ff;
   margin-top: 5px;
   display: inline-block;
 }
@@ -2782,6 +2782,7 @@ a#filters_col_bt:before {
 .reviews_summary .rating {
   font-size: 14px;
   font-size: 0.875rem;
+  color: #f7f7ff;
 }
 @media (max-width: 767px) {
   .reviews_summary .rating {
@@ -2816,7 +2817,7 @@ a#filters_col_bt:before {
 .review_detail strong {
   font-size: 12px;
   font-size: 0.75rem;
-  color: #999;
+  color: #f7f7ff;
   position: relative;
   top: -3px;
 }

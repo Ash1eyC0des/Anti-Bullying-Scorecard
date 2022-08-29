@@ -7,25 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="VANNO - Premium directory consumer reviews and listings template by Ansonika">
     <meta name="author" content="Ansonika">
-    <title>VANNO | Premium directory consumer reviews and listings template by Ansonika.</title>
+    <title>Anti-Bullying Scorecard</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="../img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="../img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="../img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="../img/apple-touch-icon-144x144-precomposed.png">
 
     <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-	<link href="css/vendors.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+	<link href="../css/vendors.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -38,15 +38,15 @@
 			<div class="row">
 				<div class="col-lg-3 col-12">
 					<div id="logo">
-						<a href="index.html">
-							<img src="img/logo_sticky.svg" width="140" height="35" alt="" class="logo_sticky">
+						<a href="/index">
+							<img src="../img/logo_sticky.png" width="140" height="35" alt="" class="logo_sticky">
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-9 col-12">
 					<ul id="top_menu">
-						<li><a href="write-review.html" class="btn_top">Write a Review</a></li>
-						<li><a href="companies-landing.html" class="btn_top company">For Companies</a></li>
+						<li><a href="write-review.html" class="btn_top">Rate Your School</a></li>
+						<li><a href="companies-landing.html" class="btn_top company">For Educators</a></li>
 						<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
 					</ul>
 					<!-- /top_menu -->
@@ -59,13 +59,9 @@
 					</a>
 					<nav id="menu" class="main-menu">
 						<ul>
-							<li><span><a href="#0">Home</a></span>
-								<ul>
-									<li><a href="index.html">Home version 1</a></li>
-									<li><a href="index-2.html">Home version 2 (GDPR)</a></li>
-								</ul>
+							<li><span><a href="/index">Home</a></span>
 							</li>
-							<li><span><a href="#0">Reviews</a></span>
+							<li><span><a href="#0">Scorecards</a></span>
 								<ul>
 									<li>
 										<span><a href="#0">Layouts</a></span>
@@ -82,8 +78,8 @@
 									<li><a href="user-settings.html">User Settings</a></li>
 								</ul>
 							</li>
-							<li><span><a href="pricing.html">Pricing</a></span></li>
-							<li><span><a href="#0">Pages</a></span>
+							<li><span><a href="/about">Our Mission</a></span></li>
+							<li><span><a href="/contact">Contact Us</a></span>
 								<ul>
 									<li><a href="companies-landing.html">Compannies Landing Page</a></li>
 									<li><a href="all-categories.html">Companies Categories Page</a></li>
@@ -107,8 +103,13 @@
 									<li><a href="404.html">404 page</a></li>
 								</ul>
 							</li>
-							<li><span><a href="#0">Buy template</a></span></li>
-							<li class="d-block d-sm-none"><span><a href="#0" class="btn_top">Write a review</a></span></li>
+							<li><span><a href="#0">Account</a></span>
+								<ul>
+									<li><a href="user-dashboard.html">User Dashboard</a></li>
+									<li><a href="user-settings.html">User Settings</a></li>
+								</ul>
+							</li>
+							<li class="d-block d-sm-none"><span><a href="#0" class="btn_top">Rate Your School</a></span></li>
 						</ul>
 					</nav>
 				</div>
@@ -126,10 +127,14 @@
 					<div class="row">
 						<div class="col-lg-8">
 							<figure>
-								<img src="img/logo-company.png" alt="">
+								<img src="../img/school.png" alt="">
 							</figure>
-							<small>Shop</small>
-							<h1>Good Electronics</h1>
+							<small>School</small>
+							
+							<h1><%= school.school_name %></h1>
+
+							<p><%= `${school.lea_name}  -  ${school.city_location}, ${school.state_location} ${school.zip_location}` %></p>
+							
 							<span class="rating"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star empty"></i><em>4.50/5.00 - based on 234 reviews</em></span>
 						</div>
 						<div class="col-lg-4 review_detail">
@@ -175,7 +180,7 @@
 										<div class="progress-bar" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
-								<div class="col-lg-3 col-3 text-end"><strong>1 stars</strong></div>
+								<div class="col-lg-3 col-3 text-end"><strong>1 star</strong></div>
 							</div>
 							<!-- /row -->
 						</div>
@@ -192,7 +197,7 @@
 					<div class="review_card">
 						<div class="row">
 							<div class="col-md-2 user_info">
-								<figure><img src="img/avatar1.jpg" alt=""></figure>
+								<figure><img src="../img/avatar1.jpg" alt=""></figure>
 								<h5>Marika</h5>
 							</div>
 							<div class="col-md-10 review_content">
@@ -200,7 +205,7 @@
 									<span class="rating"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star empty"></i><em>4.50/5.00</em></span>
 									<em>Published 54 minutes ago</em>
 								</div>
-								<h4>"Avesome Experience"</h4>
+								<h4>"Awesome Experience"</h4>
 								<p>Eos tollit ancillae ea, lorem consulatu qui ne, eu eros eirmod scaevola sea. Et nec tantas accusamus salutatus, sit commodo veritus te, erat legere fabulas has ut. Rebum laudem cum ea, ius essent fuisset ut. Viderer petentium cu his. Tollit molestie suscipiantur his et.</p>
 								<ul>
 									<li><a href="#0"><i class="icon_like_alt"></i><span>Useful</span></a></li>
@@ -212,7 +217,7 @@
 						<!-- /row -->
 						<div class="row reply">
 							<div class="col-md-2 user_info">
-								<figure><img src="img/avatar.jpg" alt=""></figure>
+								<figure><img src="../img/avatar.jpg" alt=""></figure>
 							</div>
 							<div class="col-md-10">
 								<div class="review_content">
@@ -228,7 +233,7 @@
 					<div class="review_card">
 						<div class="row">
 							<div class="col-md-2 user_info">
-								<figure><img src="img/avatar4.jpg" alt=""></figure>
+								<figure><img src="../img/avatar4.jpg" alt=""></figure>
 								<h5>Lukas</h5>
 							</div>
 							<div class="col-md-10 review_content">
@@ -251,7 +256,7 @@
 					<div class="review_card">
 						<div class="row">
 							<div class="col-md-2 user_info">
-								<figure><img src="img/avatar6.jpg" alt=""></figure>
+								<figure><img src="../img/avatar6.jpg" alt=""></figure>
 								<h5>Marika</h5>
 							</div>
 							<div class="col-md-10 review_content">
@@ -271,7 +276,7 @@
 						<!-- /row -->
 						<div class="row reply">
 							<div class="col-md-2 user_info">
-								<figure><img src="img/avatar.jpg" alt=""></figure>
+								<figure><img src="../img/avatar.jpg" alt=""></figure>
 							</div>
 							<div class="col-md-10">
 								<div class="review_content">
@@ -287,7 +292,7 @@
 					<div class="review_card">
 						<div class="row">
 							<div class="col-md-2 user_info">
-								<figure><img src="img/avatar7.jpg" alt=""></figure>
+								<figure><img src="../img/avatar7.jpg" alt=""></figure>
 								<h5>Lukas</h5>
 							</div>
 							<div class="col-md-10 review_content">
@@ -322,13 +327,14 @@
 				<!-- /col -->
 				<div class="col-lg-4">
 					<div class="box_general company_info">
-						<h3>Good Electronics</h3>
-						<p>Illud scripserit mei an, sea te sonet partem contentiones. Eu quo corrumpit euripidis, enim sadipscing eos an. Mucius doctus constituto pri at, ne cetero postulant pro. At vix utinam corpora, ea oblique moderatius usu. Vix id viris consul honestatis, an constituto deterruisset consectetuer pro.</p>
-						<p><strong>Address</strong><br>97845 Baker st. 567<br>Los Angeles - US</p>
-						<p><strong>Website</strong><br><a href="#0">www.goodelectronics.com</a></p>
-						<p><strong>Email</strong><br><a href="#0">info@goodelectronics.com</a></p>
-						<p><strong>Telephone</strong><br>+54 423 565624</p>
-						<p class="follow_company"><strong>Follow us</strong><br><a href="#0"><i class="social_facebook_circle"></i></a><a href="#0"><i class="social_twitter_circle"></i></a><a href="#0"><i class="social_googleplus_circle"></i></a><a href="#0"><i class="social_instagram_circle"></i></a></p>
+						<h3><%= school.school_name %></h3>
+						<h6><em><%= school.lea_name %></em></h6>
+						<p><strong>Address</strong><br><%= school.street_location %><br><%= `${school.city_location}, ${school.state_location} ${school.zip_location}` %></p>
+						<p><strong>Telephone</strong><br><%= school.phone %></p>
+						<p><strong>Grades</strong><br><%= `${school.lowest_grade_offered} - ${school.highest_grade_offered}` %></p>
+						<p><strong>Charter</strong><br><%= school.charter === 0 ? 'No' : 'Yes' %></p>
+						<p><strong>Magnet</strong><br><%= school.magnet === 0 ? 'No' : 'Yes' %></p>
+						<p><strong>Virtual</strong><br><%= school.virtual === 0 ? 'No' : 'Yes' %></p>
 					</div>
 				</div>
 			</div>
@@ -509,9 +515,9 @@
 	<div id="toTop"></div><!-- Back to top button -->
 	
 	<!-- COMMON SCRIPTS -->
-    <script src="js/common_scripts.js"></script>
-	<script src="js/functions.js"></script>
-	<script src="assets/validate.js"></script>
+    <script src="../js/common_scripts.js"></script>
+		<script src="../js/functions.js"></script>
+		<script src="../assets/validate.js"></script>
 
 </body>
 </html>

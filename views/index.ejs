@@ -9,6 +9,8 @@
     <meta name="author" content="Ashley Christman">
     <title>Anti-Bullying Scorecard</title>
 
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <!-- Favicons-->
     <link rel="shortcut icon" href="img\favicon\favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="img\favicon\apple-touch-icon.png">
@@ -19,7 +21,10 @@
     <!-- BASE CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-	<link href="css/vendors.css" rel="stylesheet">
+		<link href="css/vendors.css" rel="stylesheet">
+		<link href="css/jquery-ui.min.css" rel="stylesheet">
+		<link href="css/jquery-ui.structure.min.css" rel="stylesheet">
+		<link href="css/jquery-ui.theme.min.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
@@ -38,8 +43,8 @@
 			</a>
 		</div>
 		<ul id="top_menu">
-			<li><a href="write-review.html" class="btn_top">Write a Review</a></li>
-			<li><a href="companies-landing.html" class="btn_top company">For Companies</a></li>
+			<li><a href="write-review.html" class="btn_top">Rate Your School</a></li>
+			<li><a href="companies-landing.html" class="btn_top company">For Educators</a></li>
 			<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
 		</ul>
 		<!-- /top_menu -->
@@ -53,13 +58,9 @@
 		<!-- /btn_mobile -->
 		<nav id="menu" class="main-menu">
 			<ul>
-				<li><span><a href="#0">Home</a></span>
-					<ul>
-						<li><a href="index.html">Home version 1</a></li>
-						<li><a href="index-2.html">Home version 2 (GDPR)</a></li>
-					</ul>
+				<li><span><a href="index">Home</a></span>
 				</li>
-				<li><span><a href="#0">Reviews</a></span>
+				<li><span><a href="#0">Scorecards</a></span>
 					<ul>
 						<li>
 							<span><a href="#0">Layouts</a></span>
@@ -72,14 +73,12 @@
 						<li><a href="reviews-page.html">Reviews page</a></li>
 						<li><a href="write-review.html">Write a review</a></li>
 						<li><a href="confirm.html">Confirm page</a></li>
-						<li><a href="user-dashboard.html">User Dashboard</a></li>
-						<li><a href="user-settings.html">User Settings</a></li>
 					</ul>
 				</li>
-				<li><span><a href="pricing.html">Pricing</a></span></li>
-				<li><span><a href="#0">Pages</a></span>
+				<li><span><a href="about.html">Our Mission</a></span></li>
+				<li><span><a href="contact.html">Contact Us</a></span>
 					<ul>
-						<li><a href="companies-landing.html">Compannies Landing Page</a></li>
+						<li><a href="companies-landing.html">Companies Landing Page</a></li>
 						<li><a href="all-categories.html">Companies Categories Page</a></li>
 						<li><a href="category-companies-listings-filterstop.html">Companies Listing Page</a></li>
 						<li><a href="blog.html">Blog</a></li>
@@ -88,7 +87,6 @@
 						<li><a href="about.html">About</a></li>
 						<li><a href="help.html">Help Section</a></li>
 						<li><a href="faq.html">Faq Section</a></li>
-						<li><a href="contacts.html">Contacts</a></li>
 						<li>
 							<span><a href="#0">Icon Packs</a></span>
 							<ul>
@@ -101,8 +99,13 @@
 						<li><a href="404.html">404 page</a></li>
 					</ul>
 				</li>
-				<li><span><a href="#0">Buy template</a></span></li>
-				<li class="d-block d-sm-none"><span><a href="#0" class="btn_top">Write a review</a></span></li>
+				<li><span><a href="#0">Account</a></span>
+					<ul>
+						<li><a href="user-dashboard.html">User Dashboard</a></li>
+						<li><a href="user-settings.html">User Settings</a></li>
+					</ul>
+				</li>
+				<li class="d-block d-sm-none"><span><a href="#0" class="btn_top">Rate Your School</a></span></li>
 			</ul>
 		</nav>
 	</header>
@@ -113,31 +116,77 @@
 			<div class="wrapper">
 				<div class="container">
 					<img src="img\abs-round.png" alt="">
-					<h3>Rate your school district's Anti-Bullying initiatives.</h3>
-					<!-- <p>Check Ratings of Businesses, Read Reviews &amp; Buy</p> -->
+					<h3>Rate the Anti-Bullying initiatives of your child's school</h3>
+					<p>Together, we can change the narrative.</p>
 					<div class="row justify-content-center">
 						<div class="col-lg-9">
-						<form method="post" action="grid-listings-filterstop.html">
+						<form method="get" action="">
 							<div class="row g-0 custom-search-input-2">
 								<div class="col-lg-7">
-									<div class="form-group">
-										<input class="form-control" type="text" placeholder="What are you looking for...">
+									<div class="form-group ui=widget">
+										<input class="search-name form-control" type="text" placeholder="Enter School Name" id="school" name="school">
 										<i class="icon_search"></i>
 									</div>
 								</div>
 								<div class="col-lg-3">
-									<select class="wide">
-										<option>All Categories</option>	
-										<option>Shops</option>
-										<option>Hotels</option>
-										<option>Restaurants</option>
-										<option>Bars</option>
-										<option>Events</option>
-										<option>Fitness</option>
+									<select class="search-state wide">
+										<!-- <option value="">Select State</option> -->
+										<!-- <option value="AL">Alabama</option>
+										<option value="AK">Alaska</option>
+										<option value="AZ">Arizona</option>
+										<option value="AR">Arkansas</option>
+										<option value="CA">California</option>
+										<option value="CO">Colorado</option>
+										<option value="CT">Connecticut</option>
+										<option value="DE">Delaware</option>
+										<option value="DC">District of Columbia</option>
+										<option value="FL">Florida</option>
+										<option value="GA">Georgia</option>
+										<option value="HI">Hawaii</option>
+										<option value="ID">Idaho</option>
+										<option value="IL">Illinois</option>
+										<option value="IN">Indiana</option>
+										<option value="IA">Iowa</option>
+										<option value="KS">Kansas</option>
+										<option value="KY">Kentucky</option>
+										<option value="LA">Louisiana</option>
+										<option value="ME">Maine</option>
+										<option value="MD">Maryland</option>
+										<option value="MA">Massachusetts</option>
+										<option value="MI">Michigan</option>
+										<option value="MN">Minnesota</option>
+										<option value="MS">Mississippi</option>
+										<option value="MO">Missouri</option>
+										<option value="MT">Montana</option>
+										<option value="NE">Nebraska</option>
+										<option value="NV">Nevada</option>
+										<option value="NH">New Hampshire</option>
+										<option value="NJ">New Jersey</option>
+										<option value="NM">New Mexico</option>
+										<option value="NY">New York</option>
+										<option value="NC">North Carolina</option>
+										<option value="ND">North Dakota</option>
+										<option value="OH">Ohio</option>
+										<option value="OK">Oklahoma</option>
+										<option value="OR">Oregon</option> -->
+										<option value="PA">Pennsylvania</option>
+										<!-- <option value="PR">Puerto Rico</option>
+										<option value="RI">Rhode Island</option>
+										<option value="SC">South Carolina</option>
+										<option value="SD">South Dakota</option>
+										<option value="TN">Tennessee</option>
+										<option value="TX">Texas</option>
+										<option value="UT">Utah</option>
+										<option value="VT">Vermont</option>
+										<option value="VA">Virginia</option>
+										<option value="WA">Washington</option>
+										<option value="WV">West Virginia</option>
+										<option value="WI">Wisconsin</option>
+										<option value="WY">Wyoming</option> -->
 									</select>
 								</div>
 								<div class="col-lg-2">
-									<input type="submit" value="Search">
+									<!-- <input type="submit" value="Search" class="search-btn"> -->
 								</div>
 							</div>
 							<!-- /row -->
@@ -400,7 +449,7 @@
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<a data-bs-toggle="collapse" data-bs-target="#collapse_ft_3" aria-expanded="false" aria-controls="collapse_ft_3" class="collapse_bt_mobile">
-						<h3>Contacts</h3>
+						<h3>Contact</h3>
 						<div class="circle-plus closed">
 							<div class="horizontal"></div>
 							<div class="vertical"></div>
@@ -408,9 +457,9 @@
 					</a>
 					<div class="collapse show" id="collapse_ft_3">
 						<ul class="contacts">
-							<li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
-							<li><i class="ti-headphone-alt"></i>+61 23 8093 3400</li>
-							<li><i class="ti-email"></i><a href="#0">info@domain.com</a></li>
+							<!-- <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li> -->
+							<li><i class="ti-world"></i><a href="http://www.ashleychristman.com" target="_blank">ashleychristman.com</a></li>
+							<li><i class="ti-email"></i><a href="mailto:dev@ashleychristman.com">dev@ashleychristman.com</a></li>
 						</ul>
 					</div>
 				</div>
@@ -435,11 +484,9 @@
 						<div class="follow_us">
 							<h5>Follow Us</h5>
 							<ul>
-								<li><a href="#0"><i class="ti-facebook"></i></a></li>
-								<li><a href="#0"><i class="ti-twitter-alt"></i></a></li>
-								<li><a href="#0"><i class="ti-google"></i></a></li>
-								<li><a href="#0"><i class="ti-pinterest"></i></a></li>
-								<li><a href="#0"><i class="ti-instagram"></i></a></li>
+								<li><a href="https://www.linkedin.com/in/ashley-christman/" target="_blank"><i class="ti-linkedin"></i></a></li>
+								<li><a href="https://github.com/Ash1eyC0des" target="_blank"><i class="ti-github"></i></a></li>
+								<li><a href="https://twitter.com/Ash1eyC0des" target="_blank"><i class="ti-twitter-alt"></i></a></li>
 							</ul>
 						</div>
 					</div>
@@ -449,7 +496,7 @@
 			<hr>
 			<div class="row">
 				<div class="col-lg-6">
-					<ul id="footer-selector">
+					<!-- <ul id="footer-selector">
 						<li>
 							<div class="styled-select" id="lang-selector">
 								<select>
@@ -460,7 +507,7 @@
 								</select>
 							</div>
 						</li>
-					</ul>
+					</ul> -->
 				</div>
 				<div class="col-lg-6">
 					<ul id="additional_links">
@@ -527,9 +574,23 @@
 	<div id="toTop"></div><!-- Back to top button -->
 	
 	<!-- COMMON SCRIPTS -->
-    <script src="js/common_scripts.js"></script>
+  <script src="js/common_scripts.js"></script>
 	<script src="js/functions.js"></script>
 	<script src="assets/validate.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+
+	<!-- SPECIFIC SCRIPTS -->
+	<script src="js/jquery.cookiebar.js"></script>
+	<script>
+		(function ($) {
+			'use strict';
+			$.cookieBar({
+				fixed: true
+			});
+		})(window.jQuery); 
+	</script>
+	
 
 </body>
 </html>
