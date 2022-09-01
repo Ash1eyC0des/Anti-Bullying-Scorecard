@@ -1364,7 +1364,7 @@ ul#additional_links li:after {
 }
 .hero_single.version_3 {
   height: 620px;
-  background: #070600 url(../img/home_section_2.jpg) center center no-repeat;
+  background: #070600 url(../img/home_section_2.png) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -2142,7 +2142,7 @@ a.box_cat_home ul li strong {
 }
 
 .call_section_3 {
-  background: #279af1 url(../img/bg_call_section.jpg) center center no-repeat fixed;
+  background: #279af1 url(../img/bg_call_section.png) center center no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -3217,7 +3217,7 @@ a.boxed_list:hover i {
 
 /*-------- 2.5 Login/register --------*/
 #login_bg, #register_bg {
-  background: #ccc url(../img/access_bg.jpg) center center no-repeat fixed;
+  background: #ccc url(../img/access_bg.png) center center no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

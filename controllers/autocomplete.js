@@ -1,6 +1,7 @@
 const School = require('../models/School')
 
 module.exports = {
+  // @desc MongoDB Autocomplete Search
   autocompleteSchools: async (req, res) => {
     try {
       const schools = await School.aggregate([
@@ -20,15 +21,5 @@ module.exports = {
     } catch(err) {
       res.status(500).send({ message: err.message })
     }
-  }, 
-  getScorecardsBySchool: async (req, res) => {
-    try {
-      let schoolData = await School.findById(req.params.id)
-      // res.send(result)
-      console.log(schoolData)
-      res.render('scorecards.ejs', {'school': schoolData})
-    } catch(err) {
-      res.status(500).send({ message: err.message })
-    }
-  }
+  },
 }

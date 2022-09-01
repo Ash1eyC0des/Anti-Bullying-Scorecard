@@ -5,7 +5,7 @@ const ScorecardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  user: {
+  userId: {
     type: String,
     required: true,
   },
@@ -27,6 +27,14 @@ const ScorecardSchema = new mongoose.Schema({
   },
   photo: {
     type: String,
+    required: false,
+  },
+  upvotes: {
+    type: Number,
+    required: false,
+  },
+  downvotes: {
+    type: Number,
     required: false,
   },
 

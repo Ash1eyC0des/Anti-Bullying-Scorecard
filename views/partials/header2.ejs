@@ -1,0 +1,82 @@
+<header class="header_in is_fixed menu_fixed">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-12">
+        <div id="logo">
+          <a href="/">
+            <img src="/img/logo_sticky.png" width="140" height="35" alt="" class="logo_sticky">
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-9 col-12">
+        <ul id="top_menu">
+          <li><a href="<%= school ? `/schools/${school.id}/create` : '/schools' %>" class="btn_top">Rate Your School</a></li>
+          <% if (user) { %>
+            <li>
+              <div class="dropdown dropdown-user">
+                <a href="#0" class="logged" data-bs-toggle="dropdown"><img src="/img/avatar4.jpg" alt=""></a>
+                <div class="dropdown-menu">
+                  <ul>
+                    <li><a href="user-dashboard.html">My Reviews</a></li>
+                    <li><a href="user-settings.html">My Settings</a></li>
+                    <li><a href="/logout">Log Out</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          <% } else{ %>
+            <li><a href="companies-landing.html" class="btn_top company">For Educators</a></li>
+            <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In<a></li>
+          <% }%>
+        </ul>
+        <!-- /top_menu -->
+        <a href="#menu" class="btn_mobile">
+          <div class="hamburger hamburger--spin" id="hamburger">
+            <div class="hamburger-box">
+              <div class="hamburger-inner"></div>
+            </div>
+          </div>
+        </a>
+        <!-- /btn_mobile -->
+        <nav id="menu" class="main-menu">
+          <ul>
+            <li><span><a href="/">Home</a></span>
+            </li>
+            <li><span><a href="#0">Schools</a></span>
+              <ul>
+                <li><a href="reviews-page.html">Reviews page</a></li>
+                <li><a href="write-review.html">Write a review</a></li>
+                <li><a href="confirm.html">Confirm page</a></li>
+              </ul>
+            </li>
+            <li><span><a href="/about">Our Mission</a></span></li>
+            <li><span><a href="/contact">Contact Us</a></span>
+              <ul>
+                <li><a href="companies-landing.html">Companies Landing Page</a></li>
+                <li><a href="all-categories.html">Companies Categories Page</a></li>
+                <li><a href="category-companies-listings-filterstop.html">Companies Listing Page</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="help.html">Help Section</a></li>
+                <li><a href="faq.html">Faq Section</a></li>
+                <li><a href="404.html">404 page</a></li>
+              </ul>
+            </li>
+            <li><span><a href="#0">Account</a></span>
+              <ul>
+                <li><a href="user-dashboard.html">User Dashboard</a></li>
+                <li><a href="user-settings.html">User Settings</a></li>
+              </ul>
+            </li>
+            <li class="d-block d-sm-none"><span><a href="#0" class="btn_top">Rate Your School</a></span></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->		
+</header>
+<!-- /header -->

@@ -9,7 +9,9 @@ const logger = require('morgan')
 const cors = require('cors')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const scorecardRoutes = require('./routes/scorecards')
+const schoolsRoutes = require('./routes/schools')
+const userRoutes = require('./routes/user')
+
 
 require('dotenv').config({path: './config/.env'})
 
@@ -19,6 +21,7 @@ require('./config/passport')(passport)
 connectDB()
 
 app.set('view engine', 'ejs')
+app.disable('view cache'); // Disable EJS cache
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -43,7 +46,9 @@ app.use(passport.session())
 app.use(flash())
   
 app.use('/', mainRoutes)
-app.use('/scorecards', scorecardRoutes)
+app.use('/schools', schoolsRoutes)
+app.use('/user', userRoutes)
+
  
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')
