@@ -1,12 +1,15 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose
 
 const ScorecardSchema = new mongoose.Schema({
-  schoolId: {
-    type: String,
+  school: {
+    type: Schema.Types.ObjectId,
+    ref: 'School',
     required: true,
   },
-  userId: {
-    type: String,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true,
   },
   date: {

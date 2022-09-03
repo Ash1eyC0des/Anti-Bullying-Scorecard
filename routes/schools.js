@@ -10,5 +10,7 @@ router.get('/:id', schoolsController.getSchoolScorecards);
 
 router.get('/:id/create', ensureAuth, scorecardsController.getNewScorecard)
 router.post('/:id/create', ensureAuth, scorecardsController.createScorecard)
+router.get('/:id/confirm', ensureAuth, scorecardsController.confirmScorecard)
+
 
 module.exports = router

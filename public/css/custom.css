@@ -1,3 +1,30 @@
 /*============================================================================================*/
 /* Your custom styles below */
 /*============================================================================================*/
+
+/* Useful / Not Useful Button Styles */
+.btn_useful, .btn_not_useful {
+  font-size: 0.8125rem;
+  padding: 5px 10px;
+  background-color: #ededed;
+  padding: 5px 10px;
+  margin-bottom: 25px;
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  color: #555;
+}
+
+.green, .red {
+  color: #f7f7f7;
+}
+
+.green {
+  background-color: #20c997;
+}
+
+.red {
+background-color: #dc3545;
+}

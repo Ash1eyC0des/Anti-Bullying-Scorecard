@@ -10,6 +10,7 @@ const cors = require('cors')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const schoolsRoutes = require('./routes/schools')
+const scorecardsRoutes = require('./routes/scorecards')
 const userRoutes = require('./routes/user')
 
 
@@ -47,6 +48,7 @@ app.use(flash())
   
 app.use('/', mainRoutes)
 app.use('/schools', schoolsRoutes)
+app.use('/scorecards', scorecardsRoutes)
 app.use('/user', userRoutes)
 
  

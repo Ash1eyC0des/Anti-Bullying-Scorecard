@@ -5,25 +5,25 @@ const Scorecard = require('../models/Scorecard')
 module.exports = {
   // @desc User Dashboard
   getUserDashboard: async (req, res) => {
-    try {
-      const user = await User.findById((req.user.id))
-      const scorecards = await Scorecard.find({userId: req.user.id})
-      console.log(scorecards)
+    try{
+      const scorecards = await Scorecard.find({userId: req.user.id}).populate('school')
+      const scorecardSchools = scorecards.map(scorecard => `${scorecard.school.school_name}`)
       const totalScorecards = await Scorecard.countDocuments({userId:req.user.id})
       const upvotes = scorecards.reduce((acc, obj) => acc + obj.upvotes, 0)
       const downvotes = scorecards.reduce((acc, obj) => acc + obj.downvotes, 0)
       res.render('dashboard.ejs', {
-          'school': req.body.school || '',
-          'user': user, 
-          'scorecards': scorecards, 
-          'total': totalScorecards, 
-          'upvotes': upvotes, 
-          'downvotes': downvotes
+          user: req.user, 
+          school: req.body.school || '',
+          scorecards: scorecards, 
+          scorecardSchools: scorecardSchools,
+          total: totalScorecards, 
+          upvotes: upvotes, 
+          downvotes: downvotes
       })
-    } catch(err) {
+  }catch(err){
       console.log(err)
-    }
-  },
+  }
+},
   updateUserDashboard: async (req, res)=>{
     try{
         await User.findOneAndUpdate({_id:req.user.id}, {
@@ -37,7 +37,10 @@ module.exports = {
 },
   getUserSettings: async (req,res)=> {
     try {
-        res.render('settings.ejs', { 'user': req.user })
+        res.render('settings.ejs', { 
+          user: req.user,
+          school: req.body.school || '', 
+        })
     }catch(err) {
         console.log(err)
     }
