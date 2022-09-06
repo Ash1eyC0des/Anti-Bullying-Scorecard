@@ -6,7 +6,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 
 router.get('/', schoolsController.getSchoolSearch)
-router.get('/:id', schoolsController.getSchoolScorecards);
+router.get('/:id', scorecardsController.getSchoolScorecards);
 
 router.get('/:id/create', ensureAuth, scorecardsController.getNewScorecard)
 router.post('/:id/create', ensureAuth, scorecardsController.createScorecard)

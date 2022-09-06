@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="VANNO - Premium directory consumer reviews and listings template by Ansonika">
 	<meta name="author" content="Ansonika">
-	<title>Anti-Bullying Scorecard</title>
+	<title>Edit Scorecard | Anti-Bullying Scorecard</title>
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="\img\favicon\favicon.ico" type="image/x-icon">
@@ -34,26 +34,36 @@
 			<main class="margin_main_container">
 				<div class="container margin_60_35">
 					<div class="row">
-						<div class="col-lg-8">
+						<div class="col-lg-12">
 							<div class="box_general write_review">
-								<form action="/schools/<%= school.id %>/create" method="post">
-									<h1>Write a scorecard for <%= school.school_name %>
-									</h1>
+								<form action="/scorecards/<%= scorecard.id %>/edit" method="post">
+									<!-- <input type="hidden" name="_method" value="put"> -->
+									<h1>Edit your scorecard for <%= school.school_name %></h1>
+									<input type="hidden" name="scorecardId" value="<%= scorecard.id %>">
 									<input type="hidden" name="schoolId" value="<%= school.id %>">
 									<div class="rating_submit">
 										<div class="form-group">
 											<label class="d-block">Overall rating</label>
 											<span class="rating">
-												<input type="radio" class="rating-input" id="5_star" name="rating" value="5"><label for="5_star"
-													class="rating-star"></label>
-												<input type="radio" class="rating-input" id="4_star" name="rating" value="4"><label for="4_star"
-													class="rating-star"></label>
-												<input type="radio" class="rating-input" id="3_star" name="rating" value="3"><label for="3_star"
-													class="rating-star"></label>
-												<input type="radio" class="rating-input" id="2_star" name="rating" value="2"><label for="2_star"
-													class="rating-star"></label>
-												<input type="radio" class="rating-input" id="1_star" name="rating" value="1"><label for="1_star"
-													class="rating-star" required></label>
+												<input type="radio" class="rating-input edit-rating" id="5_star" name="rating" value="5"
+													<%=scorecard.rating==5 ? "checked" : "" %>>
+												<label for="5_star" class="rating-star"></label>
+
+												<input type="radio" class="rating-input edit-rating" id="4_star" name="rating" value="4"
+													<%=scorecard.rating==4 ? "checked" : "" %>>
+												<label for="4_star" class="rating-star"></label>
+
+												<input type="radio" class="rating-input edit-rating" id="3_star" name="rating" value="3"
+													<%=scorecard.rating==3 ? "checked" : "" %>>
+												<label for="3_star" class="rating-star"></label>
+
+												<input type="radio" class="rating-input edit-rating" id="2_star" name="rating" value="2"
+													<%=scorecard.rating==2 ? "checked" : "" %>>
+												<label for="2_star" class="rating-star"></label>
+
+												<input type="radio" class="rating-input edit-rating" id="1_star" name="rating" value="1"
+													<%=scorecard.rating==1 ? "checked" : "" %>>
+												<label for="1_star" class="rating-star" required></label>
 											</span>
 										</div>
 									</div>
@@ -61,13 +71,13 @@
 									<div class="form-group">
 										<label>Title of your review</label>
 										<input class="form-control" type="text" name="title"
-											placeholder="If you could say it in one sentence, what would you say?" required>
+											placeholder="If you could say it in one sentence, what would you say?" value='<%= scorecard.title %>' required>
 									</div>
 									<div class="form-group">
 										<label>Your review</label>
 										<textarea class="form-control" style="height: 180px;" name="review"
-											placeholder="Write your review to help others learn about this school's anti-bullying policies and procedures"
-											required></textarea>
+											placeholder="Write your review to help others learn about this school's anti-bullying policies and procedures" 
+											required><%= scorecard.review %></textarea>
 									</div>
 									<div class="form-group">
 										<label>Add your photo (optional)</label>
@@ -84,64 +94,27 @@
 											</label>
 										</div>
 									</div>
-									<input type="submit" class="btn_1" value="Submit Scorecard">
+									<input type="submit" class="btn_1 edit" value="Submit Scorecard">
 								</form>
 							</div>
 						</div>
 						<!-- /col -->
-						<div class="col-lg-4">
-							<div class="latest_review">
-								<h4>Recent reviews for<br>
-									<%= school.school_name %>
-								</h4>
-								<% scorecards.forEach((scorecard, i)=> { %>
-									<% if (i < 3) { %>
-										<div class="review_listing">
-											<div class="clearfix add_bottom_10">
-												<figure><img src="/img/avatar3.jpg" alt=""></figure>
-												<span class="rating">
-													<% for (let i=1; i <=scorecard.rating; i++) { %>
-														<i class="icon_star"></i>
-														<% } %>
-															<em>
-																<%= scorecard.rating %>/5
-															</em>
-												</span>
-											</div>
-											<h3><strong>
-													<%= scorecardUsers[i] %>
-												</strong></h3>
-											<h4>
-												<%= scorecard.title %>
-											</h4>
-											<p>
-												<%= scorecard.review %>
-											</p>
-											<ul class="clearfix">
-												<li><small>
-														<%= scorecard.date %>
-													</small></li>
-												<li><a href="reviews-page.html" class="btn_1 small">Read review</a></li>
-											</ul>
-										</div>
-										<% }}) %>
-							</div>
-							<!-- /latest_review -->
 
-						</div>
 					</div>
-					<!-- /row -->
 				</div>
-				<!-- /container -->
-			</main>
-			<!--/main-->
+				<!-- /row -->
+	</div>
+	<!-- /container -->
+	</main>
+	<!--/main-->
 
-			<%- include('partials/footer') %>
+	<%- include('partials/footer') %>
 
-				<!-- COMMON SCRIPTS -->
-				<script src="/js/common_scripts.js"></script>
-				<script src="/js/functions.js"></script>
-				<script src="/assets/validate.js"></script>
+		<!-- COMMON SCRIPTS -->
+		<script src="/js/common_scripts.js"></script>
+		<script src="/js/functions.js"></script>
+		<script src="/assets/validate.js"></script>
+		<script src="/js/main.js"></script>
 
 </body>
 

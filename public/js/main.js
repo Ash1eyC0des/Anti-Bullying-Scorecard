@@ -22,15 +22,15 @@ $(document).ready(function() {
 
 // @desc Delete & Edit button functionality
 const deleteBtn = document.querySelectorAll('.btn_delete')
-const editBtn = document.querySelectorAll('.btn_edit')
+// const editBtn = document.querySelectorAll('.btn_edit')
 
 Array.from(deleteBtn).forEach((btn => {
   btn.addEventListener('click', deleteScorecard)
 }))
 
-Array.from(editBtn).forEach((btn => {
-  btn.addEventListener('click', editScorecard)
-}))
+// Array.from(editBtn).forEach((btn => {
+//   btn.addEventListener('click', editScorecard)
+// }))
 
 async function deleteScorecard() {
   const scorecardId = this.dataset.id
@@ -42,10 +42,30 @@ async function deleteScorecard() {
         'scorecardId': scorecardId
       })
     })
+    const data = await response.json()
+    console.log(data)
+    location.reload()
   } catch(err){
     console.log(err)
   }
 }
+
+// async function editScorecard() {
+//   const scorecardId = this.dataset.id
+//   try {
+//     const response = await fetch(`/scorecards/${scorecardId}/edit`, {
+//       headers: {'Content-type': 'application/json'},
+//       body: JSON.stringify({
+//         'scorecardId': scorecardId
+//       })
+//     })
+//     const data = await response.json()
+//     console.log(data)
+//     location.reload()
+//   } catch(err){
+//     console.log(err)
+//   }
+// }
 
 
 // @desc Useful & Not Useful button functionality
@@ -100,7 +120,6 @@ async function markNotUseful() {
   let upvotes = +this.previousElementSibling.dataset.upvotes
   let downvotes = +this.dataset.downvotes
 
-  
   if (this.classList.contains('red')) {
     this.classList.remove('red')
     downvotes -= 1

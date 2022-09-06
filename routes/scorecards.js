@@ -9,7 +9,7 @@ router.put('/markNotUseful', ensureAuth, scorecardsController.markNotUseful)
 
 router.delete('/delete', ensureAuth, scorecardsController.deleteScorecard)
 
-router.get('/edit', ensureAuth, scorecardsController.getEditScorecard)
-router.put('/edit', ensureAuth, scorecardsController.editScorecard)
+router.post('/:id/edit', ensureAuth, scorecardsController.editScorecard)
+router.get('/:id/edit', ensureAuth, scorecardsController.getEditScorecard)
 
 module.exports = router

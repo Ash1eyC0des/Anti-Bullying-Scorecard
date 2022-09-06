@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="The Anti-Bullying Scorecard">
 		<meta name="author" content="Ashley Christman">
-		<title>Anti-Bullying Scorecard</title>
+		<title>Settings | Anti-Bullying Scorecard</title>
 	
 		<!-- Favicons-->
 		<link rel="shortcut icon" href="\img\favicon\favicon.ico" type="image/x-icon">
@@ -39,24 +39,24 @@
 					<div class="row">
 						<div class="col-md-6">
 							<figure>
-								<img src="img/avatar4.jpg" alt="">
+								<img src="/img/avatar4.jpg" alt="">
 							</figure>
-							<h1>Mark Steinberg</h1>
-							<span>United States</span>
+							<h1><%= user.firstName %> <%= user.lastName %></h1>
+							<span><%= user.email %></span>
 						</div>
 						<div class="col-md-6">
 							<ul>
 								<li>
-									<strong>3</strong>
-									<a href="#0" class="tooltips" data-bs-toggle="tooltip" data-placement="bottom" title="Reviews written by you"><i class="icon_star"></i> Reviews</a>
+									<strong><%= total %></strong>
+									<a href="#" class="tooltips" data-bs-toggle="tooltip" data-placement="bottom" title="Reviews written by you"><i class="icon_star"></i> Reviews</a>
 								</li>
 								<li>
-									<strong>12</strong>
-									<a href="#0" class="tooltips" data-bs-toggle="tooltip" data-placement="bottom" title="Number of people who have read your reviews"><i class="icon-user-1"></i> Reads</a>
+									<strong><%= upvotes %></strong>
+									<a href="#" class="tooltips" data-bs-toggle="tooltip" data-placement="bottom" title="Number of people who found your reviews useful"><i class="icon-user-1"></i> Useful</a>
 								</li>
 								<li>
-									<strong>36</strong>
-									<a href="#0" class="tooltips" data-bs-toggle="tooltip" data-placement="bottom" title="Number of people who found your review useful"><i class="icon_like_alt"></i> Useful</a>
+									<strong><%= downvotes %></strong>
+									<a href="#" class="tooltips" data-bs-toggle="tooltip" data-placement="bottom" title="Number of people who found your reviews not useful"><i class="icon_like_alt"></i> Not Useful</a>
 								</li>
 							</ul>
 						</div>
@@ -70,37 +70,25 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="settings_panel">
-					    <h3>Personal settings</h3>
+					    <h3>Personal Settings</h3>
 					    <hr>
-						<div class="form-group">
-							<label>Edit Profile text</label>
-							<textarea class="form-control" style="height: 180px;" placeholder="Your profile"></textarea>
-						</div>
 						<div class="form-group">
 							<label>Edit Photo</label>
 							<div class="fileupload"><input type="file" name="fileupload" accept="image/*"></div>
 						</div>
 						<div class="form-group">
 							<label>Edit Email</label>
-							<input class="form-control" type="email" placeholder="mark@domani.com">
+							<input class="form-control" type="email" value="<%= user.email %>" required>
 						</div>
 						<div class="form-group">
-							<label>Edit Full name</label>
-							<input class="form-control" type="text" placeholder="Mark Steinberg">
+							<label>Edit Full Name</label>
+							<input class="form-control" type="text" value="<%= `${user.firstName} ${user.lastName}` %>" required>
 						</div>
-						<div class="form-group">
-							<label>Edit City</label>
-							<input class="form-control" type="text" placeholder="Malaga">
-						</div>
-						<div class="form-group">
-							<label>Edit Country</label>
-							<input class="form-control" type="text" placeholder="Malaga">
-						</div>
-						<p class="text-end"><a class="btn_1 small add_top_15" href="#0">Save personal info</a></p>
+						<p class="text-end"><a class="btn_1 small add_top_15" href="#">Save Personal Info</a></p>
 					</div>
 					<!-- /settings_panel -->
 					<div class="settings_panel">
-					    <h3>Change password</h3>
+					    <h3>Change Password</h3>
 					    <hr>
 						<div class="form-group">
 							<label>Current Password</label>
@@ -115,15 +103,15 @@
 							<input class="form-control" type="password" id="password2">
 						</div>
 						<div id="pass-info" class="clearfix"></div>
-						<p class="text-end"><a class="btn_1 small" href="#0">Save password</a></p>
+						<p class="text-end"><a class="btn_1 small" href="#">Save Password</a></p>
 					</div>
 					<!-- /settings_panel -->
 				</div>
 				<!-- /col -->
 				<div class="col-lg-4" id="sidebar">
 					<div class="box_general">
-						<h5>Delete account</h5>
-						<p>At nec senserit aliquando intellegat, et graece facilisis pro. Per in ridens sensibus interesset, eos ei nonumes incorrupte, iriure diceret an eos.</p>
+						<h5>Delete Account</h5>
+						<p>Your scorecards and profile will be permanently deleted.</p>
 						<a href="#" class="btn_1 small">Delete account</a>
 					</div>
 				</div>
@@ -137,12 +125,12 @@
 	<%- include('partials/footer') %>
 	
 	<!-- COMMON SCRIPTS -->
-    <script src="js/common_scripts.js"></script>
-	<script src="js/functions.js"></script>
-	<script src="assets/validate.js"></script>
+    <script src="/js/common_scripts.js"></script>
+	<script src="/js/functions.js"></script>
+	<script src="/assets/validate.js"></script>
 	
 	<!-- SPECIFIC SCRIPTS -->
-	<script src="js/pw_strenght.js"></script>
+	<script src="/js/pw_strenght.js"></script>
 
 </body>
 </html>

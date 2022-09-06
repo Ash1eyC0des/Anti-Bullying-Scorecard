@@ -33,9 +33,10 @@ module.exports = {
         try{
             const schoolData = await School.findById(req.params.id)
             console.log(schoolData)
-            const scorecards = await Scorecard.find({schoolId: req.body.schoolId}).populate('user')
+            const scorecards = await Scorecard.find({school: req.params.id}).populate('user')
             console.log(scorecards)
             const scorecardUsers = scorecards.map(scorecard => `${scorecard.user.firstName} ${scorecard.user.lastName}`)
+            console.log(scorecardUsers)
             const totalScorecards = scorecards.length
             const avgRating = scorecards.reduce((acc, obj) => acc + obj.rating, 0) / +scorecards.length.toFixed(1)
             res.render('scorecards.ejs', {
@@ -72,8 +73,8 @@ module.exports = {
     createScorecard: async (req, res)=>{
         try{
             await Scorecard.create({
-                schoolId: req.body.schoolId, 
-                userId: req.user.id, 
+                school: req.body.schoolId, 
+                user: req.user.id, 
                 date: Date.now(), 
                 rating: req.body.rating, 
                 title: req.body.title, 
@@ -99,7 +100,7 @@ module.exports = {
             console.log(err)
         }
     },
-    // @desc +1 to 'Useful' count
+    // Edit 'Useful' count
     markUseful: async (req, res)=>{
         try{
             await Scorecard.findOneAndUpdate({_id:req.body.scorecardId},{
@@ -112,7 +113,7 @@ module.exports = {
             console.log(err)
         }
     },
-    // @desc +1 'Not Useful' Count
+    // @desc Edit 'Not Useful' Count
     markNotUseful: async (req, res)=>{
         try{
             await Scorecard.findOneAndUpdate({_id:req.body.scorecardId},{
@@ -128,29 +129,29 @@ module.exports = {
     // @desc Get Edit Scorecard
     getEditScorecard: async (req, res)=>{
         try{
-            res.render('confirm.ejs', {
+            const scorecard = await Scorecard.findById(req.params.id).populate('school')
+            const school = scorecard.school
+            console.log(scorecard)
+            res.render('edit.ejs', {
                 'user': req.user,
-                'school': req.body.school
+                'school': school, 
+                'scorecard': scorecard
             })
         }catch(err){
             console.log(err)
         }
     },
-    // @desc Post Edit Scorecard  
+    // @desc Put Edit Scorecard  
     editScorecard: async (req, res)=>{
-        console.log(req.body.scorecardId)
         try{
-            await Scorecard.findOneAndUpdate({_id:req.body.scorecardId}, {
-                school: req.body.schoolId,
-                user: req.user,
-                date: req.body.date,
-                rating: req.body.rating,
-                title: req.body.title,
-                review: req.body.review,
-                photo: req.body.photo,
-            })
+            const scorecard = await Scorecard.findByIdAndUpdate(
+                req.params.id, 
+                req.body, 
+                {new: true,}
+            )
             console.log('Scorecard Updated')
-            res.redirect(`schools/${req.body.schoolId}/confirm`)
+            // res.json('Scorecard Updated')
+            res.redirect('/user/dashboard', )
         }catch(err){
             console.log(err)
         }

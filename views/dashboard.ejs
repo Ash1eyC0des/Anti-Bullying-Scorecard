@@ -54,7 +54,7 @@
 											<strong>
 												<%= total %>
 											</strong>
-											<a href="" class="tooltips" data-bs-toggle="tooltip" data-placement="bottom"
+											<a href="#" class="tooltips" data-bs-toggle="tooltip" data-placement="bottom"
 												title="Reviews written by you"><i class="icon_star"></i> Reviews</a>
 										</li>
 										<li>
@@ -83,8 +83,14 @@
 
 				<div class="container margin_60_35">
 					<div class="row">
-						<div class="col-lg-8">
-							<% scorecards.forEach((scorecard, i) => { %>
+						<div class="col-lg-12">
+							<% if (!scorecards.length) { %>
+								<div class="review_card no_scorecards">
+									<h4>You have not posted any scorecards.</h4>
+									<p><a href="/schools">Click here</a> to create a scorecard now. </p>
+		
+								</div>
+							<% } else { scorecards.forEach((scorecard, i) => { %>
 								<div class="review_card">
 									<div class="row">
 										<div class="col-md-2 user_info">
@@ -111,21 +117,21 @@
 
 											<p><%= scorecard.review %></p>
 											<ul>
-												<li><a href="" class="btn_delete" data-id='<%=scorecard._id%>'><i class="icon-trash"></i> Delete</a></li>
+												<li><a class="btn_delete" data-id='<%=scorecard._id%>'><i class="icon-trash"></i> Delete</a></li>
 
-												<li ><a href="" class="btn_edit" data-id='<%=scorecard._id%>'><i class="icon-edit-3"></i> Edit</a></li>
+												<li ><a href="/scorecards/<%=scorecard.id%>/edit" class="btn_edit"><i class="icon-edit-3"></i> Edit</a></li>
 											</ul>
 										</div>
 									</div>
 									<!-- /row -->
 								</div>
 								<!-- /review_card -->
-							<% }) %>
+							<% })} %>
 						</div>
 						<!-- /col -->
 
 
-						<div class="col-lg-4">
+						<!-- <div class="col-lg-4">
 							<div class="box_general general_info">
 								<h3>Delete a review<i class="pe-7s-help1"></i></h3>
 								<p><strong>Mucius doctus constituto pri at.</strong> At vix utinam corpora, ea oblique moderatius usu.
@@ -142,7 +148,7 @@
 								<hr>
 								<div class="text-center"><a href="faq.html" class="btn_1 small">View all FAQ</a></div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<!-- /row -->
 				</div>
@@ -156,6 +162,7 @@
 				<script src="/js/common_scripts.js"></script>
 				<script src="/js/functions.js"></script>
 				<script src="/assets/validate.js"></script>
+				<script src="/js/main.js"></script>
 
 </body>
 

@@ -8,6 +8,7 @@ const flash = require('express-flash')
 const logger = require('morgan')
 const cors = require('cors')
 const connectDB = require('./config/database')
+// const methodOverride = require('method-override')
 const mainRoutes = require('./routes/main')
 const schoolsRoutes = require('./routes/schools')
 const scorecardsRoutes = require('./routes/scorecards')
@@ -50,6 +51,18 @@ app.use('/', mainRoutes)
 app.use('/schools', schoolsRoutes)
 app.use('/scorecards', scorecardsRoutes)
 app.use('/user', userRoutes)
+
+// Method override
+// app.use(
+//   methodOverride(function (req, res) {
+//     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+//       // look in urlencoded POST bodies and delete it
+//       let method = req.body._method
+//       delete req.body._method
+//       return method
+//     }
+//   })
+// )
 
  
 app.listen(process.env.PORT, ()=>{

@@ -55,7 +55,7 @@
 										<i class="icon_star empty"></i>
 									<% } %>
 								<% } %>
-								<em><%= avgRating %>/5 - based on <%= `${total} ${total == 1 ? 'review' : 'reviews'}` %></em>
+								<em><%=  !avgRating ? 'No Scorecards Yet!' : `${avgRating} out of 5 - based on ${total} ${total == 1 ? 'scorecard' : 'scorecards'}` %></em>
 							</span>
 						</div>
 
@@ -148,13 +148,17 @@
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-8" id="paginated-list" aria-live="polite">
-
-					<% scorecards.forEach((scorecard, i) => { %>
+					<% if (!scorecards.length) { %>
+						<div class="review_card no_scorecards">
+							<h4>This school does not currently have any scorecards.</h4>
+							<p><a href="<%= `/schools/${school._id}/create` %>">Click here</a> to create a scorecard for this school now. </p>
+						</div>
+					<% } else { scorecards.forEach((scorecard, i) => { %>
 						<div class="review_card">
 							<div class="row">
 								<div class="col-md-2 user_info">
 									<figure><img src="/img/avatar1.jpg" alt=""></figure>
-									<h5></h5>
+									<h5><%= scorecardUsers[i] %></h5>
 								</div>
 								<div class="col-md-10 review_content">
 									<div class="clearfix add_bottom_15">
@@ -199,7 +203,7 @@
 							<!-- /row -->
 						</div>
 						<!-- /review_card -->
-						<% }) %>
+						<% })} %>
 
 					<!-- <div class="pagination__wrapper add_bottom_15">
 						<ul class="pagination" id="pagination-numbers">

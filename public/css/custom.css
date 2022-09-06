@@ -1,6 +1,14 @@
 /*============================================================================================*/
 /* Your custom styles below */
 /*============================================================================================*/
+ .no_scorecards {
+  padding-bottom: 25px;
+ }
+ 
+.btn_1.edit {
+  display: block;
+  clear: both;
+ }
 
 /* Useful / Not Useful Button Styles */
 .btn_useful, .btn_not_useful {
