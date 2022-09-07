@@ -150,6 +150,22 @@ async function markNotUseful() {
   }
 }
 
+// @desc Delete User
+const deleteUserBtn = document.getElementById('delete_user_btn')
+deleteUserBtn.addEventListener('click', deleteUser)
+
+async function deleteUser() {
+  try {
+    await fetch('/user/delete', {
+      method: 'DELETE', 
+      headers: {'Content-type': 'application/json'},
+    })
+  } catch(err){
+    console.log(err)
+  }
+
+}
+
 
 // // @desc Pagination
 // const paginationNumbers = document.getElementById("pagination-numbers");

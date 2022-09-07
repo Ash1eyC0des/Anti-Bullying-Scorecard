@@ -70,40 +70,48 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="settings_panel">
-					    <h3>Personal Settings</h3>
-					    <hr>
-						<div class="form-group">
-							<label>Edit Photo</label>
-							<div class="fileupload"><input type="file" name="fileupload" accept="image/*"></div>
-						</div>
-						<div class="form-group">
-							<label>Edit Email</label>
-							<input class="form-control" type="email" value="<%= user.email %>" required>
-						</div>
-						<div class="form-group">
-							<label>Edit Full Name</label>
-							<input class="form-control" type="text" value="<%= `${user.firstName} ${user.lastName}` %>" required>
-						</div>
-						<p class="text-end"><a class="btn_1 small add_top_15" href="#">Save Personal Info</a></p>
+						<form action="/user/settings" method="post">
+								<h3>Personal Settings</h3>
+								<hr>
+							<div class="form-group">
+								<label>Edit Photo</label>
+								<div class="fileupload"><input type="file" name="fileupload" accept="image/*"></div>
+							</div>
+							<div class="form-group">
+								<label>Edit Email</label>
+								<input class="form-control" type="email" name="email" value="<%= user.email %>" required>
+							</div>
+							<div class="form-group">
+								<label>Edit First Name</label>
+								<input class="form-control" type="text" name="firstName" value="<%= user.firstName %>" required>
+							</div>
+							<div class="form-group">
+								<label>Edit Last Name</label>
+								<input class="form-control" type="text" name="lastName" value="<%= user.lastName %>" required>
+							</div>
+							<input type="submit" class="btn_1 small add_top_15 add_bottom_20" value="Save Personal Info">
+						</form>
 					</div>
 					<!-- /settings_panel -->
 					<div class="settings_panel">
-					    <h3>Change Password</h3>
-					    <hr>
-						<div class="form-group">
-							<label>Current Password</label>
-							<input class="form-control" type="password" id="password">
-						</div>
-						<div class="form-group">
-							<label>New Password</label>
-							<input class="form-control" type="password" id="password1">
-						</div>
-						<div class="form-group">
-							<label>Confirm Password</label>
-							<input class="form-control" type="password" id="password2">
-						</div>
-						<div id="pass-info" class="clearfix"></div>
-						<p class="text-end"><a class="btn_1 small" href="#">Save Password</a></p>
+						<form action="/user/password" method="post">
+								<h3>Change Password</h3>
+								<hr>
+							<!-- <div class="form-group">
+								<label>Current Password</label>
+								<input class="form-control" type="password" id="password" name="currentPassword">
+							</div> -->
+							<div class="form-group">
+								<label>New Password</label>
+								<input class="form-control" type="password" id="password1" name="password">
+							</div>
+							<div class="form-group">
+								<label>Confirm Password</label>
+								<input class="form-control" type="password" id="password2" name="confirmPassword">
+							</div>
+							<div id="pass-info" class="clearfix"></div>
+							<input type="submit" class="btn_1 small add_bottom_20" value="Update Password">
+						</form>
 					</div>
 					<!-- /settings_panel -->
 				</div>
@@ -112,7 +120,7 @@
 					<div class="box_general">
 						<h5>Delete Account</h5>
 						<p>Your scorecards and profile will be permanently deleted.</p>
-						<a href="#" class="btn_1 small">Delete account</a>
+						<a class="btn_1 small" id="delete_user_btn">Delete account</a>
 					</div>
 				</div>
 			</div>
@@ -126,8 +134,10 @@
 	
 	<!-- COMMON SCRIPTS -->
     <script src="/js/common_scripts.js"></script>
-	<script src="/js/functions.js"></script>
-	<script src="/assets/validate.js"></script>
+		<script src="/js/functions.js"></script>
+		<script src="/assets/validate.js"></script>
+		<script src="/js/main.js"></script>
+
 	
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="/js/pw_strenght.js"></script>

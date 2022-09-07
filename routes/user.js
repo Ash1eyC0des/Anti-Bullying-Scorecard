@@ -8,6 +8,11 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 router.get('/dashboard', ensureAuth, userController.getUserDashboard)
 
 router.get('/settings', ensureAuth, userController.getUserSettings)
-// router.put('/settings', ensureAuth, userController.updateUserSettings)
+router.post('/settings', ensureAuth, userController.updateUserSettings)
+
+router.post('/password', ensureAuth, userController.updatePassword)
+
+router.delete('/delete', ensureAuth, userController.deleteUser)
+
 
 module.exports = router;

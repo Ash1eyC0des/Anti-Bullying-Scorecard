@@ -154,7 +154,7 @@
 							<p><a href="<%= `/schools/${school._id}/create` %>">Click here</a> to create a scorecard for this school now. </p>
 						</div>
 					<% } else { scorecards.forEach((scorecard, i) => { %>
-						<div class="review_card">
+						<div id="<%= scorecard._id %>" class="review_card">
 							<div class="row">
 								<div class="col-md-2 user_info">
 									<figure><img src="/img/avatar1.jpg" alt=""></figure>

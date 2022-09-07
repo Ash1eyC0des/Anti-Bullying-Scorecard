@@ -55,7 +55,7 @@ module.exports = {
     getNewScorecard: async (req,res)=>{
         try{
             const schoolData = await School.findById(req.params.id)
-            const scorecards = await Scorecard.find({schoolId: req.params.id}).populate('user')
+            const scorecards = await Scorecard.find({school: req.params.id}).populate('user').limit(3)
             const scorecardUsers = scorecards.map(scorecard =>  `${scorecard.user.firstName} ${scorecard.user.lastName}`)
            
             res.render('create.ejs', {
@@ -73,7 +73,7 @@ module.exports = {
     createScorecard: async (req, res)=>{
         try{
             await Scorecard.create({
-                school: req.body.schoolId, 
+                school: req.body.school, 
                 user: req.user.id, 
                 date: Date.now(), 
                 rating: req.body.rating, 
