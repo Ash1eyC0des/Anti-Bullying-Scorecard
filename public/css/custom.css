@@ -44,3 +44,12 @@
 .red {
 background-color: #dc3545;
 }
+
+.alert {
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  width: 100%;
+  border-radius: 0;
+}

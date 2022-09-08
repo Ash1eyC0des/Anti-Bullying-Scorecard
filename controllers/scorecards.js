@@ -1,8 +1,6 @@
 const { promiseImpl } = require('ejs')
 const School = require('../models/School')
 const Scorecard = require('../models/Scorecard')
-const User = require('../models/User')
-
 
 module.exports = {
     // @desc Scorecards by user
@@ -150,7 +148,7 @@ module.exports = {
                 {new: true,}
             )
             console.log('Scorecard Updated')
-            // res.json('Scorecard Updated')
+            req.flash('success', { msg: 'Your scorecard has been successfully updated.' })
             res.redirect('/user/dashboard', )
         }catch(err){
             console.log(err)
@@ -161,7 +159,7 @@ module.exports = {
         try{
             await Scorecard.findOneAndDelete({_id:req.body.scorecardId})
             console.log('Deleted Scorecard')
-            res.json('Deleted Scorecard')
+            req.flash('primary', { msg: 'Your scorecard has been successfully deleted.' })
         }catch(err){
             console.log(err)
         }
