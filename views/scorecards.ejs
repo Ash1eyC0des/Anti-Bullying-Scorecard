@@ -66,7 +66,7 @@
 									<div class="progress">
 										<div class="progress-bar" 
 												role="progressbar" 
-												style="width: <%= (scorecards.filter(scorecard => scorecard.rating == 5).length / total) * 100 %>%" 
+												style="<%= `width: ${(scorecards.filter(scorecard => scorecard.rating == 5).length / total) * 100}%` %>"
 												aria-valuenow="<%= (scorecards.filter(scorecard => scorecard.rating == 5).length / total) * 100 %>" 
 												aria-valuemin="0" 
 												aria-valuemax="100">
@@ -82,7 +82,7 @@
 									<div class="progress">
 										<div class="progress-bar" 
 												role="progressbar" 
-												style="width: '<%= (scorecards.filter(scorecard => scorecard.rating == 4).length / total) * 100 %>'%" 
+												style="<%= `width: ${(scorecards.filter(scorecard => scorecard.rating == 4).length / total) * 100}%` %>"
 												aria-valuenow="<%= (scorecards.filter(scorecard => scorecard.rating == 4).length / total) * 100 %>" 
 												aria-valuemin="0" 
 												aria-valuemax="100"></div>
@@ -97,7 +97,7 @@
 									<div class="progress">
 										<div class="progress-bar" 
 												role="progressbar" 
-												style="width: '<%= (scorecards.filter(scorecard => scorecard.rating == 3).length / total) * 100 %>'%" 
+												style="<%= `width: ${(scorecards.filter(scorecard => scorecard.rating == 3).length / total) * 100}%` %>"
 												aria-valuenow="<%= (scorecards.filter(scorecard => scorecard.rating == 3).length / total) * 100 %>" 
 												aria-valuemin="0" 
 												aria-valuemax="100"></div>
@@ -112,7 +112,7 @@
 									<div class="progress">
 										<div class="progress-bar" 
 												role="progressbar" 
-												style="width: '<%= (scorecards.filter(scorecard => scorecard.rating == 2).length / total) * 100 %>'%" 
+												style="<%= `width: ${(scorecards.filter(scorecard => scorecard.rating == 2).length / total) * 100}%` %>"
 												aria-valuenow="<%= (scorecards.filter(scorecard => scorecard.rating == 2).length / total) * 100 %>" 
 												aria-valuemin="0" 
 												aria-valuemax="100"></div>
@@ -127,7 +127,7 @@
 									<div class="progress last">
 										<div class="progress-bar" 
 												role="progressbar" 
-												style="width: '<%= (scorecards.filter(scorecard => scorecard.rating == 1).length / total) * 100 %>'%" 
+												style="<%= `width: ${(scorecards.filter(scorecard => scorecard.rating == 1).length / total) * 100}%` %>"
 												aria-valuenow="<%= (scorecards.filter(scorecard => scorecard.rating == 1).length / total) * 100 %>" 
 												aria-valuemin="0" 
 												aria-valuemax="100">
