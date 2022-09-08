@@ -22,5 +22,25 @@ module.exports = {
     } catch(err) {
       console.log(err)
     }
-  }
+  }, 
+  getPrivacyPolicy: (req, res) => {
+    try {
+      res.render('privacy.ejs', {
+        user: req.user, 
+        school: '',
+     })
+    } catch(err) {
+      console.log(err)
+    }
+  }, 
+  getTerms: (req, res) => {
+    try {
+      res.render('terms.ejs', {
+        user: req.user, 
+        school: '',
+     })
+    } catch(err) {
+      console.log(err)
+    }
+  }, 
 }
