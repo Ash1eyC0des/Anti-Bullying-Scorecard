@@ -1511,7 +1511,7 @@ ul#additional_links li:after {
 }
 .hero_single.office {
   height: 500px;
-  background: #070600 url(../img/office_1.jpg) center bottom no-repeat fixed;
+  background: #070600 url(../img/bg_call_section.png) center bottom no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

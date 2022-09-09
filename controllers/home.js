@@ -43,4 +43,14 @@ module.exports = {
       console.log(err)
     }
   }, 
+  getMission: (req, res) => {
+    try {
+      res.render('mission.ejs', {
+        user: req.user, 
+        school: '',
+     })
+    } catch(err) {
+      console.log(err)
+    }
+  }, 
 }

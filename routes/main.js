@@ -17,6 +17,7 @@ router.post("/signup", authController.postSignup);
 router.get("/autocomplete", autocompleteController.autocompleteSchools);
 router.get("/privacy", homeController.getPrivacyPolicy);
 router.get("/terms", homeController.getTerms);
+router.get("/mission", homeController.getMission);
 
 
 
