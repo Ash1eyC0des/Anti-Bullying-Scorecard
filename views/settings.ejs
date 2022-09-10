@@ -81,9 +81,13 @@
 							<div class="form-group">
 								<label>Edit Email</label>
 								<input class="form-control" type="email" name="email" value="<%= user.email %>" required>
+								<% if (user.emailVerified) { %> 
+									<div class="text-success font-italic">Verified</div>
+									<% } else { %>
+									<div class="text-danger font-italic">Unverified: &nbsp;<a href="/user/verify">Send verification email</a></div>
+									<% } %>
 							</div>
-							<div class="text-danger font-italic">Unverified: &nbsp;<a href="/user/verify">Send verification email</a></div>
-							<div class="form-group">
+							<div class="form-group">		
 								<label>Edit Name</label>
 								<input class="form-control" type="text" name="name" value="<%= user.name %>" required>
 							</div>
@@ -116,12 +120,20 @@
 				<!-- /col -->
 				<div class="col-lg-4" id="sidebar">
 					<div class="box_general">
+						<h5>Linked Accounts</h5>
+						<a href="/auth/facebook" class="social_bt facebook">Link your Facebook account</a>
+						<a href="/auth/google" class="social_bt google">Link your Google account</a>
+					</div>
+					<div class="box_general">
 						<h5>Delete Account</h5>
 						<p>Your scorecards and profile will be permanently deleted.</p>
 						<a class="btn_1 small" id="delete_user_btn">Delete account</a>
 					</div>
+	
 				</div>
 			</div>
+		</div>
+
 			<!-- /row -->
 		</div>
 		<!-- /container -->
