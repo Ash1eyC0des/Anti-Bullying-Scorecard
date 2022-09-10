@@ -1,4 +1,3 @@
-const ejs = require('ejs')
 const Scorecard = require('../models/Scorecard')
 
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
         .limit(5)
         .lean()
       console.log(scorecards)
-      const scorecardUsers = scorecards.map(scorecard => `${scorecard.user.firstName} ${scorecard.user.lastName}`)
+      const scorecardUsers = scorecards.map(scorecard => scorecard.user.name)
       const scorecardSchools = scorecards.map(scorecard => scorecard.school.school_name)
       res.render('index.ejs', { 
         user: req.user, 

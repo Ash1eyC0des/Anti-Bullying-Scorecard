@@ -33,7 +33,7 @@ module.exports = {
             console.log(schoolData)
             const scorecards = await Scorecard.find({school: req.params.id}).populate('user')
             console.log(scorecards)
-            const scorecardUsers = scorecards.map(scorecard => `${scorecard.user.firstName} ${scorecard.user.lastName}`)
+            const scorecardUsers = scorecards.map(scorecard => scorecard.user.name)
             console.log(scorecardUsers)
             const totalScorecards = scorecards.length
             const avgRating = scorecards.reduce((acc, obj) => acc + obj.rating, 0) / +scorecards.length.toFixed(1)
@@ -54,7 +54,7 @@ module.exports = {
         try{
             const schoolData = await School.findById(req.params.id)
             const scorecards = await Scorecard.find({school: req.params.id}).populate('user').limit(3)
-            const scorecardUsers = scorecards.map(scorecard =>  `${scorecard.user.firstName} ${scorecard.user.lastName}`)
+            const scorecardUsers = scorecards.map(scorecard =>  scorecard.user.name)
            
             res.render('create.ejs', {
                 'user': req.user, 

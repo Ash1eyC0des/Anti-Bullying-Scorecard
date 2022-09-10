@@ -42,7 +42,7 @@
 							<figure>
 								<img src="/img/avatar4.jpg" alt="">
 							</figure>
-							<h1><%= user.firstName %> <%= user.lastName %></h1>
+							<h1><%= user.name %></h1>
 							<span><%= user.email %></span>
 						</div>
 						<div class="col-md-6">
@@ -76,19 +76,16 @@
 								<hr>
 							<div class="form-group">
 								<label>Edit Photo</label>
-								<div class="fileupload"><input type="file" name="fileupload" accept="image/*"></div>
+								<div class="fileupload"><input type="file" name="picture" accept="image/*"></div>
 							</div>
 							<div class="form-group">
 								<label>Edit Email</label>
 								<input class="form-control" type="email" name="email" value="<%= user.email %>" required>
 							</div>
+							<div class="text-danger font-italic">Unverified: &nbsp;<a href="/user/verify">Send verification email</a></div>
 							<div class="form-group">
-								<label>Edit First Name</label>
-								<input class="form-control" type="text" name="firstName" value="<%= user.firstName %>" required>
-							</div>
-							<div class="form-group">
-								<label>Edit Last Name</label>
-								<input class="form-control" type="text" name="lastName" value="<%= user.lastName %>" required>
+								<label>Edit Name</label>
+								<input class="form-control" type="text" name="name" value="<%= user.name %>" required>
 							</div>
 							<input type="submit" class="btn_1 small add_top_15 add_bottom_20" value="Save Personal Info">
 						</form>
