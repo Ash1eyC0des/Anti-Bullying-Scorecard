@@ -157,7 +157,7 @@ deleteUserBtn.addEventListener('click', deleteUser)
 async function deleteUser() {
   try {
     await fetch('/user/delete', {
-      method: 'DELETE', 
+      method: 'POST', 
       headers: {'Content-type': 'application/json'},
     })
   } catch(err){

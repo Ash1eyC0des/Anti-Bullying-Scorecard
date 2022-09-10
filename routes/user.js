@@ -11,7 +11,7 @@ router.post('/settings', ensureAuth, userController.postUpdateUserSettings)
 
 router.post('/password', ensureAuth, userController.postUpdatePassword)
 
-router.delete('/delete', ensureAuth, userController.postDeleteAccount)
+router.post('/delete', ensureAuth, userController.postDeleteAccount)
 
 router.get('/unlink/:provider', ensureAuth, userController.getOauthUnlink)
 

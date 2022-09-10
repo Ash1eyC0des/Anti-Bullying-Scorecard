@@ -56,7 +56,6 @@ const sendMail = (settings) => {
     });
 };
 
-
 module.exports = {
   // GET /login
   getLogin: (req, res) => {
@@ -64,7 +63,7 @@ module.exports = {
       return res.redirect("/user/dashboard");
     }
     res.render("login.ejs", {
-      title: "Login"
+      title: "Login",
     });
   },
 
@@ -125,9 +124,7 @@ module.exports = {
     if (req.user) {
       return res.redirect("/user/dashboard");
     }
-    res.render("/signup", {
-      title: "Create Account",
-    });
+    res.render("signup.ejs");
   },
 
   // POST /signup - Create a new local account.
@@ -300,9 +297,13 @@ module.exports = {
       if (err) {
         return next(err);
       }
-      req.logout();
-      req.flash("info", { msg: "Your account has been deleted." });
-      res.redirect("/");
+      req.logout(function (err) {
+        if (err) {
+          return next(err);
+        }
+        req.flash("info", { msg: "Your account has been deleted." });
+        res.redirect("/");
+      });
     });
   },
 
@@ -638,4 +639,4 @@ module.exports = {
       .then(() => res.redirect("/forgot"))
       .catch(next);
   },
-}
+};
