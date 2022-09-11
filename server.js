@@ -52,6 +52,16 @@ app.use('/schools', schoolsRoutes)
 app.use('/scorecards', scorecardsRoutes)
 app.use('/user', userRoutes)
 
+// Force Heroku to use HTTPS
+if(process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https')
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    else
+      next()
+  })
+}
+
 // Method override
 // app.use(
 //   methodOverride(function (req, res) {
