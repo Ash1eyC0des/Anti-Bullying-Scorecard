@@ -332,7 +332,7 @@ module.exports = {
             )} account cannot be unlinked without another form of login enabled.` +
             " Please link another account or add an email address and password.",
         });
-        return res.redirect("/account");
+        return res.redirect("/user/settings");
       }
       user.tokens = tokensWithoutProviderToUnlink;
       user.save((err) => {
@@ -342,7 +342,7 @@ module.exports = {
         req.flash("info", {
           msg: `${_.startCase(_.toLower(provider))} account has been unlinked.`,
         });
-        res.redirect("/account");
+        res.redirect("/user/settings");
       });
     });
   },
@@ -373,7 +373,7 @@ module.exports = {
           });
           return res.redirect("/forgot");
         }
-        res.render("account/reset", {
+        res.render("reset.ejs", {
           title: "Password Reset",
         });
       });
@@ -449,6 +449,7 @@ module.exports = {
 
     const setRandomToken = (token) => {
       User.findOne({ email: req.user.email }).then((user) => {
+        user.name = req.user.name
         user.emailVerificationToken = token;
         user = user.save();
       });
@@ -459,10 +460,10 @@ module.exports = {
       const mailOptions = {
         to: req.user.email,
         from: "dev@ashleychristman.com",
-        subject: "Please verify your email address on Hackathon Starter",
+        subject: "Please verify your email address on Anti-Bullying Scorecard",
         text: `Thank you for registering with Anti-Bullying Scorecard.\n\n
           This verify your email address please click on the following link, or paste this into your browser:\n\n
-          http://${req.headers.host}/account/verify/${token}\n\n
+          http://${req.headers.host}/user/verify/${token}\n\n
           \n\n
           Thank you!`,
       };
@@ -568,13 +569,14 @@ module.exports = {
     if (req.isAuthenticated()) {
       return res.redirect("/");
     }
-    res.render("user/forgot", {
+    res.render("forgot.ejs", {
       title: "Forgot Password",
     });
   },
 
   // POST /forgot - Forgot Password page.
   postForgot: (req, res, next) => {
+    console.log(req.body.email)
     const validationErrors = [];
     if (!validator.isEmail(req.body.email))
       validationErrors.push({ msg: "Please enter a valid email address." });
@@ -636,7 +638,7 @@ module.exports = {
     createRandomToken
       .then(setRandomToken)
       .then(sendForgotPasswordEmail)
-      .then(() => res.redirect("/forgot"))
+      .then(() => res.redirect("/login"))
       .catch(next);
   },
 };

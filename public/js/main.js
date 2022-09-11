@@ -166,7 +166,6 @@ async function deleteUser() {
 
 }
 
-
 // // @desc Pagination
 // const paginationNumbers = document.getElementById("pagination-numbers");
 // const paginatedList = document.getElementById("paginated-list");

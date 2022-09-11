@@ -10,7 +10,7 @@
     <% if (user) { %>
       <li>
         <div class="dropdown dropdown-user">
-          <a href="#0" class="logged" data-bs-toggle="dropdown"><img src="/img/avatar4.jpg" alt=""></a>
+          <a href="#0" class="logged" data-bs-toggle="dropdown"><img src="<%= user.picture || '/img/avatar4.jpg' %>" alt=""></a>
           <div class="dropdown-menu">
             <ul>
               <li><a href="/user/dashboard">My Reviews</a></li>

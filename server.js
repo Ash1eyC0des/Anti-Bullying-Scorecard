@@ -34,7 +34,7 @@ app.use(cors())
 // Sessions
 app.use(
     session({
-      secret: '*74P88Fd4#Kt',
+      secret: 'process.env.SESSION_SECRET',
       resave: false,
       saveUninitialized: false,
       store: MongoStore.create({ client: mongoose.connection.getClient() }),
