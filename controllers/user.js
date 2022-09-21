@@ -9,6 +9,7 @@ const validator = require("validator");
 const mailChecker = require("mailchecker");
 const User = require("../models/User");
 const Scorecard = require("../models/Scorecard");
+const cloudinary = require("../middleware/cloudinary");
 
 const randomBytesAsync = promisify(crypto.randomBytes);
 
@@ -225,40 +226,55 @@ module.exports = {
   },
 
   // POST /user/settings - Update profile information.
-  postUpdateUserSettings: (req, res, next) => {
-    const validationErrors = [];
-    if (!validator.isEmail(req.body.email))
-      validationErrors.push({ msg: "Please enter a valid email address." });
+  postUpdateUserSettings: async (req, res, next) => {
+    try {
+      const validationErrors = [];
+      if (!validator.isEmail(req.body.email))
+        validationErrors.push({ msg: "Please enter a valid email address." });
 
-    if (validationErrors.length) {
-      req.flash("errors", validationErrors);
-      return res.redirect("/user/settings");
-    }
-    req.body.email = validator.normalizeEmail(req.body.email, {
-      gmail_remove_dots: false,
-    });
-
-    User.findById(req.user.id, (err, user) => {
-      if (err) {
-        return next(err);
+      if (validationErrors.length) {
+        req.flash("errors", validationErrors);
+        return res.redirect("/user/settings");
       }
-      if (user.email !== req.body.email) user.emailVerified = false;
-      user.email = req.body.email || "";
-      user.name = req.body.name || "";
-      user.save((err) => {
+      req.body.email = validator.normalizeEmail(req.body.email, {
+        gmail_remove_dots: false,
+      });
+
+      // Upload image to cloudinary
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        width: 150,
+        height: 150,
+        gravity: "faces",
+        crop: "thumb",
+      });
+
+      await User.findById(req.user.id, (err, user) => {
         if (err) {
-          if (err.code === 11000) {
-            req.flash("errors", {
-              msg: "The email address you have entered is already associated with an account.",
-            });
-            return res.redirect("/user/settings");
-          }
           return next(err);
         }
-        req.flash("success", { msg: "Profile information has been updated." });
-        res.redirect("/user/settings");
+        if (user.email !== req.body.email) user.emailVerified = false;
+        user.email = req.body.email || "";
+        user.name = req.body.name || "";
+        user.picture = result.secure_url || "";
+        user.save((err) => {
+          if (err) {
+            if (err.code === 11000) {
+              req.flash("errors", {
+                msg: "The email address you have entered is already associated with an account.",
+              });
+              return res.redirect("/user/settings");
+            }
+            return next(err);
+          }
+          req.flash("success", {
+            msg: "Profile information has been updated.",
+          });
+          res.redirect("/user/settings");
+        });
       });
-    });
+    } catch (err) {
+      console.log(err);
+    }
   },
 
   // POST /user/password - Update current password.
@@ -449,7 +465,7 @@ module.exports = {
 
     const setRandomToken = (token) => {
       User.findOne({ email: req.user.email }).then((user) => {
-        user.name = req.user.name
+        user.name = req.user.name;
         user.emailVerificationToken = token;
         user = user.save();
       });
@@ -576,7 +592,7 @@ module.exports = {
 
   // POST /forgot - Forgot Password page.
   postForgot: (req, res, next) => {
-    console.log(req.body.email)
+    console.log(req.body.email);
     const validationErrors = [];
     if (!validator.isEmail(req.body.email))
       validationErrors.push({ msg: "Please enter a valid email address." });
