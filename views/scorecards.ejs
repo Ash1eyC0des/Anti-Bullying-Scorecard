@@ -178,6 +178,11 @@
 									</div>
 									<h4><%= scorecard.title %></h4>
 									<p><%= scorecard.review %></p>
+
+									<% if (scorecard.photo) { %>
+										<p><a href="<%= scorecard.photo %>" target="_blank">View Attached File</a></p>
+									<% } %>
+
 									<button class="btn_useful" data-id='<%= scorecard._id %>' data-upvotes='<%= scorecard.upvotes %>'>
 										<i class="icon_like_alt"></i> Useful
 									</button>
