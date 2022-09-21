@@ -106,17 +106,21 @@
 									<% } scorecards.forEach((scorecard, i)=> { %>
 										<div class="review_listing">
 											<div class="clearfix add_bottom_10">
-												<figure><img src="/img/avatar3.jpg" alt=""></figure>
+												<figure><img src="<%= scorecard.user.picture || '/img/avatar3.jpg' %>" alt=""></figure>
 												<span class="rating">
-													<% for (let i=1; i <=scorecard.rating; i++) { %>
-														<i class="icon_star"></i>
+													<% for (let i=1; i <= 5; i++) { %>
+														<% if (i <= scorecard.rating) { %>
+															<i class="icon_star"></i>
+														<% } else { %>
+															<i class="icon_star empty"></i>
 														<% } %>
+													<% } %>
 															<em>
 																<%= scorecard.rating %>/5
 															</em>
 												</span>
 											</div>
-											<h3><strong><%= scorecardUsers[i] %></strong></h3>
+											<h3><strong><%= scorecard.user.name %></strong></h3>
 											<h4><%= scorecard.title %></h4>
 											<p><%= scorecard.review.slice(0, 200) %>...</p>
 											<ul class="clearfix">
