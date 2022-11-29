@@ -7,6 +7,7 @@ A project to help shed light on the anti-bullying initiatives of school district
 
 ## How It's Made:
 **Tech used:** Bootstrap, EJS, Express, jQuery UI, MongoDB/Mongoose
+
 **Authentication:** Local, Google, & Facebook
 
 
