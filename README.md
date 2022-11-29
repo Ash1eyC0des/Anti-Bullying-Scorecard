@@ -7,6 +7,7 @@ A project to help shed light on the anti-bullying initiatives of school district
 
 ## How It's Made:
 **Tech used:** Bootstrap, EJS, Express, jQuery UI, MongoDB/Mongoose
+**Authentication:** Local, Google, & Facebook
 
 
 ## Optimizations:
@@ -15,6 +16,3 @@ In the future, I'd like to:
 - Expand to all US states (currently only PA schools available in DB)
 - Save Useful/Not Useful ratings by user
 - Add ability for school admins to respond to scorecards
-
-
-## Lessons Learned:
