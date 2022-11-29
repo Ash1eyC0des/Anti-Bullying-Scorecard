@@ -1,7 +1,7 @@
 # Anti-Bullying-Scorecard
 A project to help shed light on the anti-bullying initiatives of school districts nationwide in order to inspire change.
 
-[**Live Site**](https://anti-bullying-scorecard.herokuapp.com/)
+[**Live Site**](https://anti-bullying-scorecard.onrender.com/)
 
 ![Anti-Bullying Scorecard](/public/img/screenshot.png "Anti-Bullying Scorecard")
 
