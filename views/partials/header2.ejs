@@ -10,11 +10,13 @@
       </div>
       <div class="col-lg-9 col-12">
         <ul id="top_menu">
-          <li><a href="<%= school ? `/schools/${school.id}/create` : '/schools' %>" class="btn_top">Rate <%= school ? 'this' : 'a' %> School</a></li>
+          <li><a href="<%= school ? `/schools/${school.id}/create` : '/schools' %>" class="btn_top">Rate <%= school
+                ? 'this' : 'a' %> School</a></li>
           <% if (user) { %>
             <li>
               <div class="dropdown dropdown-user">
-                <a href="#0" class="logged" data-bs-toggle="dropdown"><img src="<%= user.picture || '/img/avatar4.jpg' %>" alt=""></a>
+                <a href="#0" class="logged" data-bs-toggle="dropdown"><img
+                    src="<%= user.picture || '/img/avatar4.jpg' %>" alt=""></a>
                 <div class="dropdown-menu">
                   <ul>
                     <li><a href="/user/dashboard">My Reviews</a></li>
@@ -24,9 +26,9 @@
                 </div>
               </div>
             </li>
-          <% } else{ %>
-            <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In<a></li>
-          <% }%>
+            <% } else{ %>
+              <li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In<a></li>
+              <% }%>
         </ul>
         <!-- /top_menu -->
         <a href="#menu" class="btn_mobile">
@@ -48,7 +50,7 @@
               <ul>
                 <li><a href="/login">Login</a></li>
                 <li><a href="/signup.html">Sign Up</a></li>
-                <li><a href="/user/dashboar">User Dashboard</a></li>
+                <li><a href="/user/dashboard">User Dashboard</a></li>
                 <li><a href="/user/settings">User Settings</a></li>
               </ul>
             </li>
@@ -59,6 +61,6 @@
     </div>
     <!-- /row -->
   </div>
-  <!-- /container -->		
+  <!-- /container -->
 </header>
 <!-- /header -->
